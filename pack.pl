@@ -1,5 +1,5 @@
 name(body_reordering).
-version('1.1.111').
+version('1.1.112').
 title('Utils to optimize the order of literals in a bodies').
 keywords([source,goal_expansion]).
 author( 'Douglas Miles', 'http://www.linkedin.com/in/logicmoo' ).
