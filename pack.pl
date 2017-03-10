@@ -9,4 +9,4 @@ home( 'https://github.com/TeamSPoon/body_reordering' ).
 download( 'https://github.com/TeamSPoon/body_reordering/release/*.zip' ).
 requires(file_scope).
 requires(subclause_expansion).
-autoload(no).
+autoload(false).
