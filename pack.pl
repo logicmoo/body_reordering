@@ -1,5 +1,5 @@
 name(body_reordering).
-version('1.1.113').
+version('1.1.114').
 title('Clause expansion Utils for deciding which order to run Goals in a body').
 keywords([source,goal_expansion]).
 author( 'Douglas Miles', 'http://www.linkedin.com/in/logicmoo' ).
