@@ -1,5 +1,5 @@
 name(body_reordering).
-version('1.1.117').
+version('1.1.118').
 title('Clause expansion Utils for deciding which order to run Goals in a body').
 keywords([source,goal_expansion,term_expansion,database,utility]).
 
