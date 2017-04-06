@@ -22,7 +22,7 @@
 % :- '$set_source_module'(system).
 
 :- if(\+ current_predicate(system:call_using_first_responder/1)).
-:- system:ensure_loaded(system:logicmoo_util_autocut).
+:- user:ensure_loaded(logicmoo_util_autocut).
 :- endif.
 
 :- export(call_using_first_responder/1).
