@@ -48,7 +48,7 @@
             fasterClause/4,
             disable_body_reorder/0)).
 
-:- ensure_loaded(logicmoo_util_body_file_scope).
+%:- ensure_loaded(logicmoo_util_body_file_scope).
 :-meta_predicate(call_body_reorder(+,+,+)).
 
 :-volatile(lmcache:reordering/3).
@@ -132,7 +132,7 @@ call_body_reorder(C,CC):-call_body_reorder(C,C,CC).
 
 :-meta_predicate(call_body_reorder(+,+,+)).
 call_body_reorder(_Code,_Head,[A]):- !,callClause(A).
-call_body_reorder(_Code,_Head,[A|B]):- !,callClause(A),call_body_reorder(_Code,_Head,B).
+call_body_reorder(Code,Head,[A|B]):- !,callClause(A),call_body_reorder(Code,Head,B).
 call_body_reorder(Code,Head,[C1,C2]):- !, call_body_reorder_compare(Code,Head,C1,C2).
 call_body_reorder(Code,Head,[C1,C2,C3]):- call_body_reorder_compare(Code,Head,call_body_reorder_compare(Code,Head,C1,C2),C3).
 

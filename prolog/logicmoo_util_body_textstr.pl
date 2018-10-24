@@ -28,7 +28,7 @@ delete_eq([L|List],Item,[L|ListO]):-delete_eq(List,Item,ListO),!.
 % user:term_expansion(I,O):- current_predicate(logicmoo_bugger_loaded/0),not(t_l:into_form_code),e2c_term_expansion(I,O).
 */
 
-:- ensure_loaded(logicmoo_util_body_file_scope).
+% :- ensure_loaded(logicmoo_util_body_file_scope).
 :-meta_predicate(do_body_textstr(+,+,+,-)).
 
 
