@@ -41,12 +41,13 @@
             reorderBody/4,
             guess_reorder/3,
             callClause/1,
-            noreorder/0,
             reorder/0,
             make_reordering_key/4,
             do_body_reorder/4,
             fasterClause/4,
             disable_body_reorder/0)).
+
+:- thread_local(t_l:noreorder/0).
 
 %:- ensure_loaded(logicmoo_util_body_file_scope).
 :-meta_predicate(call_body_reorder(+,+,+)).
@@ -54,11 +55,11 @@
 :-volatile(lmcache:reordering/3).
 :-dynamic(lmcache:reordering/3).
 
-noreorder.
+t_l:noreorder.
 reorder.
 
 can_reorderBody(_ ,true):-!,fail.
-can_reorderBody(_ ,Body):-member(M,[did,noreorder,!,call_body_reorder,call_body_reorder_compare,var,nonvar]),contains_f(M,Body),!,fail.
+can_reorderBody(_ ,Body):-member(M,[did,t_l:noreorder,!,call_body_reorder,call_body_reorder_compare,var,nonvar]),contains_f(M,Body),!,fail.
 can_reorderBody(_ ,Body):-member(M,[reorder]),contains_f(M,Body),!.
 % can_reorderBody(Head, _):- reorder_term_expansion,compound(Head),functor(Head, _ ,A),A > 0.
 
