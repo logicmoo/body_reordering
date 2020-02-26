@@ -44,27 +44,6 @@ call_using_first_responder(Call):- clause(Call,Body),
 
 
 
-a:- !,fail.
-a:- throw(failed_test).
-fr1:- \+ call_using_first_responder(a).
-
-
-b:- !.
-b:- throw(failed_test).
-fr2:- call_using_first_responder(b).
-
-wa(A):-writeln(A),asserta(A).
-
-c:- wa(c(1)).
-c:- !, (wa(c(2));wa(c(3))).
-c:- throw(failed_test).
-fr3:- call_using_first_responder(c).
-
-d:- wa(d(1));(wa(d(2));wa(d(3))).
-d:- throw(failed_test).
-fr4:- call_using_first_responder(d).
-
-
 call_using_first_responder(Goal) :-
 	predicate_property(Goal,built_in),		% <--- check for a built in predicate
 	!, call(Goal).
@@ -102,6 +81,46 @@ do_body(Goal, TF, no) :-
 	(call_using_first_responder(Goal)*->TF=true;TF=fail).
 
 
-:- break.
+
+last_clause(Any,Result):- (call(Any),deterministic(Det))*->(Det==true->Result=!;Result=true);Result=fail.
+last_clause(Any):- call(Any),dmsg(error(cont_first_responder(Any))).
+
+goal_expansion(last_clause(Any), (call(Any),deterministic(yes)->!;true)).
+
+
+:- fixup_exports.
+
+:- if(true).
+% some tests
+
+a:- !,fail.
+a:- throw(failed_test).
+fr1:- \+ call_using_first_responder(a).
+
+
+b:- !.
+b:- throw(failed_test).
+fr2:- call_using_first_responder(b).
+
+wa(A):-writeln(A),asserta(A).
+
+c:- wa(c(1)).
+c:- !, (wa(c(2));wa(c(3))).
+c:- throw(failed_test).
+fr3:- call_using_first_responder(c).
+
+d:- wa(d(1));(wa(d(2));wa(d(3))).
+d:- throw(failed_test).
+fr4:- call_using_first_responder(d).
+
+e:- wa(c(1)).
+e:- last_clause(wa(c(2));wa(c(3))).
+e:- throw(failed_test).
+
+fr5:- \+ (e,fail).
+
+:- endif.
+
+%:- break.
 
 

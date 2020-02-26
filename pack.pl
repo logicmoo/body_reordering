@@ -1,5 +1,5 @@
 name(body_reordering).
-version('1.2.111').
+version('1.3.111').
 title('Clause expansion Utils for deciding which order to run Goals in a body').
 keywords([source,goal_expansion,term_expansion,database,utility]).
 
@@ -9,4 +9,4 @@ maintainer('TeamSPoon', 'https://github.com/TeamSPoon/').
 home('https://github.com/TeamSPoon/body_reordering.git').
 download( 'https://github.com/TeamSPoon/body_reordering/release/*.zip').
 requires(logicmoo_utils).
-autoload(false).
+autoload(true).
