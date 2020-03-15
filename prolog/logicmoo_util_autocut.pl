@@ -54,7 +54,7 @@ call_using_first_responder(Goal) :-
 	do_body(Body, AfterCut, HadCut),
 	(   HadCut = yes,
 		!,
-		do_body(yes,AfterCut)
+		do_body(AfterCut)
 	;   HadCut = no
 	).
 
