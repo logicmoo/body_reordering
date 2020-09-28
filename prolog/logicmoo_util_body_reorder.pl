@@ -201,7 +201,7 @@ callClause(C):- on_x_debug(ereq(C)).
 
 enable_body_reorder:- enable_in_file(do_body_reorder).
 disable_body_reorder:- disable_in_file(do_body_reorder).
-:- disable_body_reorder.
+:- rtrace(disable_body_reorder).
 
 :- fixup_exports.
 
